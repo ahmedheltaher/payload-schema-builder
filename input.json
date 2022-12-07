@@ -1,0 +1,91 @@
+{
+	"routes": [
+		{
+			"route": "/test",
+			"method": "GET",
+			"body": {
+				"name": "John Doe",
+				"age": 30,
+				"cars": [
+					"Ford",
+					"BMW",
+					"Fiat"
+				],
+				"address": {
+					"street": "Main",
+					"number": 123,
+					"details": {
+						"floor": 1,
+						"apartment": "A"
+					}
+				},
+				"isActive": true
+			},
+			"query": {
+				"message": "Hello World!"
+			},
+			"headers": {
+				"Content-Type": "application/json"
+			}
+		},
+		{
+			"route": "/test",
+			"method": "GET",
+			"body": {
+				"name": "John Doelk'askdsakndkl'asnd",
+				"age": 30,
+				"cars": [
+					"Ford",
+					"BMW",
+					"Fiat"
+				],
+				"address": {
+					"street": "Main Street asdljsalkdj",
+					"number": 123,
+					"details": {
+						"floor": 1,
+						"apartment": "A"
+					},
+					"details2": {
+						"floor": 1,
+						"apartment": "A"
+					}
+				},
+				"isActive": true
+			},
+			"query": {
+				"message": "Hello World!"
+			},
+			"headers": {
+				"Content-Type": "application/json"
+			}
+		},
+		{
+			"route": "/test",
+			"method": "GET",
+			"body": {
+				"name": "Joe",
+				"dogs": [
+					{
+						"name": "pupsi",
+						"age": 12
+					}
+				],
+				"address": {
+					"street": "Main Street",
+					"details": {
+						"floor": 1,
+						"apartment": "Aasdsad"
+					}
+				},
+				"isActive": true
+			},
+			"query": {
+				"message": "Hello World!"
+			},
+			"headers": {
+				"Content-Type": "application/json"
+			}
+		}
+	]
+}
