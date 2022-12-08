@@ -1,7 +1,17 @@
 function getType(value) {
 	if (Array.isArray(value))
 		return 'array';
-	return typeof value;
+	const type = typeof value;
+	if (type === 'object') {
+		if (value === null) return 'null';
+		if (value instanceof Date) return 'date';
+		return 'object';
+	}
+	if (type === 'number') {
+		if (value % 1 === 0) return 'integer';
+		return 'float';
+	}
+	return type;
 }
 
 class SchemaGenerator {

@@ -28,7 +28,7 @@
               "path": "name"
             },
             {
-              "type": "number",
+              "type": "integer",
               "required": true,
               "path": "age"
             }
@@ -46,7 +46,7 @@
           "path": "address.street"
         },
         {
-          "type": "number",
+          "type": "integer",
           "required": true,
           "path": "address.details.floor"
         },
@@ -88,12 +88,12 @@
           "required": false
         },
         {
-          "type": "number",
+          "type": "integer",
           "required": false,
           "path": "address.number"
         },
         {
-          "type": "number",
+          "type": "integer",
           "required": false,
           "path": "address.details2.floor"
         },
@@ -105,6 +105,16 @@
           },
           "required": false,
           "path": "address.details2.apartment"
+        },
+        {
+          "type": "integer",
+          "required": false,
+          "path": "age"
+        },
+        {
+          "type": "float",
+          "required": false,
+          "path": "salary"
         }
       ],
       "query": {

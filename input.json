@@ -5,7 +5,7 @@
 			"method": "GET",
 			"body": {
 				"name": "John Doe",
-				"age": {},
+				"age": 30,
 				"cars": [
 					"Ford",
 					"BMW",
@@ -19,7 +19,8 @@
 						"apartment": "A"
 					}
 				},
-				"isActive": "yes"
+				"isActive": "yes",
+				"salary": 123.45
 			},
 			"query": {
 				"message": "Hello World!"
