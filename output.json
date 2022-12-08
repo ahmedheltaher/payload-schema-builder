@@ -14,8 +14,8 @@
                 {
                     "type": "array",
                     "length": {
-                        "min": 1,
-                        "max": 1
+                        "min": 2,
+                        "max": 2
                     },
                     "items": [
                         {
@@ -28,13 +28,36 @@
                             "path": "name"
                         },
                         {
-                            "type": "integer",
-                            "required": true,
+                            "type": "string",
+                            "length": {
+                                "min": 11,
+                                "max": 11
+                            },
+                            "required": false,
+                            "path": "address.street"
+                        },
+                        {
+                            "type": "number",
+                            "required": false,
+                            "path": "address.details.floor"
+                        },
+                        {
+                            "type": "string",
+                            "length": {
+                                "min": 1,
+                                "max": 1
+                            },
+                            "required": false,
+                            "path": "address.details.apartment"
+                        },
+                        {
+                            "type": "number",
+                            "required": false,
                             "path": "age"
                         }
                     ],
-                    "path": "dogs",
-                    "required": false
+                    "required": false,
+                    "path": "dogs"
                 },
                 {
                     "type": "string",
@@ -46,7 +69,7 @@
                     "path": "address.street"
                 },
                 {
-                    "type": "integer",
+                    "type": "number",
                     "required": true,
                     "path": "address.details.floor"
                 },
@@ -69,12 +92,37 @@
                     }
                 },
                 {
-                    "type": "integer",
+                    "type": "array",
+                    "length": {
+                        "min": 3,
+                        "max": 4
+                    },
+                    "items": [
+                        {
+                            "type": "array",
+                            "length": {
+                                "min": 3,
+                                "max": 4
+                            },
+                            "items": [
+                                {
+                                    "type": "number",
+                                    "required": true
+                                }
+                            ],
+                            "required": true
+                        }
+                    ],
+                    "required": false,
+                    "path": "matrix"
+                },
+                {
+                    "type": "number",
                     "required": false,
                     "path": "address.number"
                 },
                 {
-                    "type": "integer",
+                    "type": "number",
                     "required": false,
                     "path": "address.details2.floor"
                 },
@@ -88,12 +136,31 @@
                     "path": "address.details2.apartment"
                 },
                 {
-                    "type": "integer",
+                    "type": "number",
                     "required": false,
                     "path": "age"
                 },
                 {
-                    "type": "float",
+                    "type": "array",
+                    "length": {
+                        "min": 3,
+                        "max": 3
+                    },
+                    "items": [
+                        {
+                            "type": "string",
+                            "length": {
+                                "min": 4,
+                                "max": 4
+                            },
+                            "required": true
+                        }
+                    ],
+                    "required": false,
+                    "path": "cars"
+                },
+                {
+                    "type": "number",
                     "required": false,
                     "path": "salary"
                 }
@@ -134,6 +201,7 @@
                             "required": true
                         }
                     ],
+                    "required": true,
                     "path": "hostNameData.info.age"
                 },
                 {
@@ -148,6 +216,7 @@
                             "required": true
                         }
                     ],
+                    "required": true,
                     "path": "hostNameData.info.gender.others"
                 },
                 {
@@ -175,6 +244,7 @@
                             "required": true
                         }
                     ],
+                    "required": true,
                     "path": "hostNameData.subHostData.info.age"
                 },
                 {
@@ -189,6 +259,7 @@
                             "required": true
                         }
                     ],
+                    "required": true,
                     "path": "hostNameData.subHostData.info.gender.others"
                 },
                 {
@@ -216,6 +287,7 @@
                             "required": true
                         }
                     ],
+                    "required": true,
                     "path": "hostNameData.subHostData.thirdHostData.age"
                 },
                 {
@@ -230,6 +302,7 @@
                             "required": true
                         }
                     ],
+                    "required": true,
                     "path": "hostNameData.subHostData.thirdHostData.gender.others"
                 }
             ],

@@ -1,30 +1,32 @@
 function getType(value) {
-	if (Array.isArray(value))
-		return 'array';
-	const type = typeof value;
-	if (type === 'object') {
-		if (value === null) return 'null';
-		if (value instanceof Date) return 'date';
-		return 'object';
-	}
-	if (type === 'number') {
-		if (value % 1 === 0) return 'integer';
-		return 'float';
-	}
-	return type;
+	if (value === null) return 'null';
+	if (value === undefined) return 'undefined';
+	return Array.isArray(value) ? 'array' : typeof value;
 }
 
 class SchemaGenerator {
 	generate({ payload }) {
 		const schema = [];
 		if (getType(payload) === 'array' && payload.length) {
+			let items;
+			if (getType(payload[0]) === 'object') {
+				const subSchema = payload.map(item => this.generate({ payload: item }));
+				const mergedSchema = subSchema.reduce((acc, curr) => {
+					return this.mergeSchemas({ newSchema: curr, excisingSchema: acc });
+				}, []);
+				items = mergedSchema;
+			}
+			else {
+				items = this.generate({ payload: payload[0] });
+			}
 			schema.push({
 				type: 'array',
 				length: {
 					min: payload.length,
 					max: payload.length
 				},
-				items: this.generate({ payload: payload[0] })
+				items,
+				required: true,
 			});
 		} else if (getType(payload) === 'object' && Object.keys(payload).length) {
 			Object.keys(payload).forEach(key => {
@@ -109,11 +111,9 @@ class SchemaGenerator {
 			if (!newSchemaItem) {
 				mergedSchema.push({ ...excisingSchemaItem, required: false });
 			}
-		}
-		);
+		});
 
 		return mergedSchema;
-
 	}
 }
 
