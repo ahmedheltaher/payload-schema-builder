@@ -33,10 +33,12 @@ class SchemaGenerator {
 		} else {
 			schema.push({
 				type: getType(payload),
-				length: {
-					min: payload?.length || 0,
-					max: payload?.length || 0
-				},
+				...(getType(payload) === 'string' && {
+					length: {
+						min: payload?.length || 0,
+						max: payload?.length || 0
+					}
+				}),
 				required: true
 			});
 		}
@@ -62,33 +64,33 @@ class SchemaGenerator {
 				if (newSchemaItem.type === 'array') {
 					mergedSchema.push({
 						...excisingSchemaItem,
+						type: 'array',
 						length: {
 							min: Math.min(excisingSchemaItem.length.min, newSchemaItem.length.min),
 							max: Math.max(excisingSchemaItem.length.max, newSchemaItem.length.max)
 						},
 						items: this.mergeSchemas({ newSchema: newSchemaItem.items, excisingSchema: excisingSchemaItem.items })
 					});
-				} else if (newSchemaItem.type === 'object') {
-					mergedSchema.push({
-						...excisingSchemaItem,
-						items: this.mergeSchemas({ newSchema: newSchemaItem.items, excisingSchema: excisingSchemaItem.items })
-					});
 				} else {
-					if (newSchemaItem.type === 'number') {
-					} else {
-						mergedSchema.push({
-							...excisingSchemaItem,
+					const mergedItem = {
+						...excisingSchemaItem,
+						type: newSchemaItem.type,
+						...(newSchemaItem.type === 'string' && {
 							length: {
-								min: Math.min(excisingSchemaItem.length.min, newSchemaItem.length.min),
-								max: Math.max(excisingSchemaItem.length.max, newSchemaItem.length.max)
-							},
-							...(excisingSchemaItem.type !== 'number' && { type: newSchemaItem.type })
-						});
+								min: Math.min(excisingSchemaItem.length?.min ?? newSchemaItem.length.min, newSchemaItem.length.min),
+								max: Math.max(excisingSchemaItem.length?.max ?? newSchemaItem.length.max, newSchemaItem.length.max)
+							}
+						})
 					}
+
+					if (newSchemaItem.type !== 'string' && "length" in excisingSchemaItem) {
+						delete mergedItem.length
+					}
+
+					mergedSchema.push(mergedItem)
 				}
 			}
-		}
-		);
+		});
 
 		excisingSchema.forEach(excisingSchemaItem => {
 			const newSchemaItem = newSchema.find(item => item.path === excisingSchemaItem.path);

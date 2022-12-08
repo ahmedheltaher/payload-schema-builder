@@ -5,7 +5,7 @@
 			"method": "GET",
 			"body": {
 				"name": "John Doe",
-				"age": 30,
+				"age": {},
 				"cars": [
 					"Ford",
 					"BMW",
@@ -19,7 +19,7 @@
 						"apartment": "A"
 					}
 				},
-				"isActive": true
+				"isActive": "yes"
 			},
 			"query": {
 				"message": "Hello World!"
@@ -33,7 +33,6 @@
 			"method": "GET",
 			"body": {
 				"name": "John Doelk'askdsakndkl'asnd",
-				"age": 30,
 				"cars": [
 					"Ford",
 					"BMW",
@@ -78,7 +77,80 @@
 						"apartment": "Aasdsad"
 					}
 				},
-				"isActive": true
+				"isActive": "yas;lidhsla;des"
+			},
+			"query": {
+				"message": "Hello World!"
+			},
+			"headers": {
+				"Content-Type": "application/json"
+			}
+		},
+		{
+			"route": "/joe",
+			"method": "Post",
+			"body": {
+				"hostNameData": {
+					"info": {
+						"name": "joe",
+						"age": [
+							"15",
+							"15",
+							554,
+							true
+						],
+						"gender": {
+							"others": [
+								true,
+								false,
+								true,
+								0,
+								1,
+								"1512"
+							]
+						}
+					},
+					"subHostData": {
+						"info": {
+							"name": "joe",
+							"age": [
+								"15",
+								"15",
+								554,
+								true
+							],
+							"gender": {
+								"others": [
+									true,
+									false,
+									true,
+									0,
+									1,
+									"1512"
+								]
+							}
+						},
+						"thirdHostData": {
+							"name": "joe",
+							"age": [
+								"15",
+								"15",
+								554,
+								true
+							],
+							"gender": {
+								"others": [
+									true,
+									false,
+									true,
+									0,
+									1,
+									"1512"
+								]
+							}
+						}
+					}
+				}
 			},
 			"query": {
 				"message": "Hello World!"
