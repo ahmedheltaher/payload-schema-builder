@@ -17,7 +17,7 @@ function getType(value) {
 class SchemaGenerator {
 	generate({ payload }) {
 		const schema = [];
-		if (Array.isArray(payload)) {
+		if (getType(payload) === 'array' && payload.length) {
 			schema.push({
 				type: 'array',
 				length: {
@@ -26,7 +26,7 @@ class SchemaGenerator {
 				},
 				items: this.generate({ payload: payload[0] })
 			});
-		} else if (payload && typeof payload === 'object') {
+		} else if (getType(payload) === 'object' && Object.keys(payload).length) {
 			Object.keys(payload).forEach(key => {
 				const subSchema = this.generate({ payload: payload[key] });
 				subSchema.forEach(subSchemaItem => {
@@ -41,16 +41,18 @@ class SchemaGenerator {
 			});
 
 		} else {
-			schema.push({
-				type: getType(payload),
-				...(getType(payload) === 'string' && {
-					length: {
-						min: payload?.length || 0,
-						max: payload?.length || 0
-					}
-				}),
-				required: true
-			});
+			if (getType(payload) !== 'array' && getType(payload) !== 'object') {
+				schema.push({
+					type: getType(payload),
+					...(getType(payload) === 'string' && {
+						length: {
+							min: payload?.length || 0,
+							max: payload?.length || 0
+						}
+					}),
+					required: true
+				});
+			}
 		}
 
 		return schema;
@@ -71,13 +73,13 @@ class SchemaGenerator {
 			if (!excisingSchemaItem) {
 				mergedSchema.push({ ...newSchemaItem, required: false });
 			} else {
-				if (newSchemaItem.type === 'array') {
+				if (newSchemaItem.type === 'array' && newSchemaItem.length) {
 					mergedSchema.push({
 						...excisingSchemaItem,
 						type: 'array',
 						length: {
-							min: Math.min(excisingSchemaItem.length.min, newSchemaItem.length.min),
-							max: Math.max(excisingSchemaItem.length.max, newSchemaItem.length.max)
+							min: Math.min(excisingSchemaItem.length?.min ?? newSchemaItem.length.min, newSchemaItem.length.min),
+							max: Math.max(excisingSchemaItem.length?.max ?? newSchemaItem.length.max, newSchemaItem.length.max)
 						},
 						items: this.mergeSchemas({ newSchema: newSchemaItem.items, excisingSchema: excisingSchemaItem.items })
 					});

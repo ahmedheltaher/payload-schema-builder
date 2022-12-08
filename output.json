@@ -1,263 +1,244 @@
 {
-  "/test": {
-    "GET": {
-      "body": [
-        {
-          "type": "string",
-          "length": {
-            "min": 3,
-            "max": 27
-          },
-          "required": true,
-          "path": "name"
-        },
-        {
-          "type": "array",
-          "length": {
-            "min": 1,
-            "max": 1
-          },
-          "items": [
-            {
-              "type": "string",
-              "length": {
-                "min": 5,
-                "max": 5
-              },
-              "required": true,
-              "path": "name"
+    "/test": {
+        "GET": {
+            "body": [
+                {
+                    "type": "string",
+                    "length": {
+                        "min": 3,
+                        "max": 27
+                    },
+                    "required": true,
+                    "path": "name"
+                },
+                {
+                    "type": "array",
+                    "length": {
+                        "min": 1,
+                        "max": 1
+                    },
+                    "items": [
+                        {
+                            "type": "string",
+                            "length": {
+                                "min": 5,
+                                "max": 5
+                            },
+                            "required": true,
+                            "path": "name"
+                        },
+                        {
+                            "type": "integer",
+                            "required": true,
+                            "path": "age"
+                        }
+                    ],
+                    "path": "dogs",
+                    "required": false
+                },
+                {
+                    "type": "string",
+                    "length": {
+                        "min": 4,
+                        "max": 23
+                    },
+                    "required": true,
+                    "path": "address.street"
+                },
+                {
+                    "type": "integer",
+                    "required": true,
+                    "path": "address.details.floor"
+                },
+                {
+                    "type": "string",
+                    "length": {
+                        "min": 1,
+                        "max": 7
+                    },
+                    "required": true,
+                    "path": "address.details.apartment"
+                },
+                {
+                    "type": "string",
+                    "required": true,
+                    "path": "isActive",
+                    "length": {
+                        "min": 15,
+                        "max": 15
+                    }
+                },
+                {
+                    "type": "integer",
+                    "required": false,
+                    "path": "address.number"
+                },
+                {
+                    "type": "integer",
+                    "required": false,
+                    "path": "address.details2.floor"
+                },
+                {
+                    "type": "string",
+                    "length": {
+                        "min": 1,
+                        "max": 1
+                    },
+                    "required": false,
+                    "path": "address.details2.apartment"
+                },
+                {
+                    "type": "integer",
+                    "required": false,
+                    "path": "age"
+                },
+                {
+                    "type": "float",
+                    "required": false,
+                    "path": "salary"
+                }
+            ],
+            "query": {
+                "message": "Hello World!"
             },
-            {
-              "type": "integer",
-              "required": true,
-              "path": "age"
+            "headers": {
+                "Content-Type": "application/json"
             }
-          ],
-          "path": "dogs",
-          "required": false
-        },
-        {
-          "type": "string",
-          "length": {
-            "min": 4,
-            "max": 23
-          },
-          "required": true,
-          "path": "address.street"
-        },
-        {
-          "type": "integer",
-          "required": true,
-          "path": "address.details.floor"
-        },
-        {
-          "type": "string",
-          "length": {
-            "min": 1,
-            "max": 7
-          },
-          "required": true,
-          "path": "address.details.apartment"
-        },
-        {
-          "type": "string",
-          "required": true,
-          "path": "isActive",
-          "length": {
-            "min": 15,
-            "max": 15
-          }
-        },
-        {
-          "type": "array",
-          "length": {
-            "min": 3,
-            "max": 3
-          },
-          "items": [
-            {
-              "type": "string",
-              "length": {
-                "min": 4,
-                "max": 4
-              },
-              "required": true
-            }
-          ],
-          "path": "cars",
-          "required": false
-        },
-        {
-          "type": "integer",
-          "required": false,
-          "path": "address.number"
-        },
-        {
-          "type": "integer",
-          "required": false,
-          "path": "address.details2.floor"
-        },
-        {
-          "type": "string",
-          "length": {
-            "min": 1,
-            "max": 1
-          },
-          "required": false,
-          "path": "address.details2.apartment"
-        },
-        {
-          "type": "integer",
-          "required": false,
-          "path": "age"
-        },
-        {
-          "type": "float",
-          "required": false,
-          "path": "salary"
         }
-      ],
-      "query": {
-        "message": "Hello World!"
-      },
-      "headers": {
-        "Content-Type": "application/json"
-      }
-    }
-  },
-  "/joe": {
-    "POST": {
-      "body": [
-        {
-          "type": "string",
-          "length": {
-            "min": 3,
-            "max": 3
-          },
-          "required": true,
-          "path": "hostNameData.info.name"
-        },
-        {
-          "type": "array",
-          "length": {
-            "min": 4,
-            "max": 4
-          },
-          "items": [
-            {
-              "type": "string",
-              "length": {
-                "min": 2,
-                "max": 2
-              },
-              "required": true
+    },
+    "/joe": {
+        "POST": {
+            "body": [
+                {
+                    "type": "string",
+                    "length": {
+                        "min": 3,
+                        "max": 3
+                    },
+                    "required": true,
+                    "path": "hostNameData.info.name"
+                },
+                {
+                    "type": "array",
+                    "length": {
+                        "min": 4,
+                        "max": 4
+                    },
+                    "items": [
+                        {
+                            "type": "string",
+                            "length": {
+                                "min": 2,
+                                "max": 2
+                            },
+                            "required": true
+                        }
+                    ],
+                    "path": "hostNameData.info.age"
+                },
+                {
+                    "type": "array",
+                    "length": {
+                        "min": 6,
+                        "max": 6
+                    },
+                    "items": [
+                        {
+                            "type": "boolean",
+                            "required": true
+                        }
+                    ],
+                    "path": "hostNameData.info.gender.others"
+                },
+                {
+                    "type": "string",
+                    "length": {
+                        "min": 3,
+                        "max": 3
+                    },
+                    "required": true,
+                    "path": "hostNameData.subHostData.info.name"
+                },
+                {
+                    "type": "array",
+                    "length": {
+                        "min": 4,
+                        "max": 4
+                    },
+                    "items": [
+                        {
+                            "type": "string",
+                            "length": {
+                                "min": 2,
+                                "max": 2
+                            },
+                            "required": true
+                        }
+                    ],
+                    "path": "hostNameData.subHostData.info.age"
+                },
+                {
+                    "type": "array",
+                    "length": {
+                        "min": 6,
+                        "max": 6
+                    },
+                    "items": [
+                        {
+                            "type": "boolean",
+                            "required": true
+                        }
+                    ],
+                    "path": "hostNameData.subHostData.info.gender.others"
+                },
+                {
+                    "type": "string",
+                    "length": {
+                        "min": 3,
+                        "max": 3
+                    },
+                    "required": true,
+                    "path": "hostNameData.subHostData.thirdHostData.name"
+                },
+                {
+                    "type": "array",
+                    "length": {
+                        "min": 4,
+                        "max": 4
+                    },
+                    "items": [
+                        {
+                            "type": "string",
+                            "length": {
+                                "min": 2,
+                                "max": 2
+                            },
+                            "required": true
+                        }
+                    ],
+                    "path": "hostNameData.subHostData.thirdHostData.age"
+                },
+                {
+                    "type": "array",
+                    "length": {
+                        "min": 6,
+                        "max": 6
+                    },
+                    "items": [
+                        {
+                            "type": "boolean",
+                            "required": true
+                        }
+                    ],
+                    "path": "hostNameData.subHostData.thirdHostData.gender.others"
+                }
+            ],
+            "query": {
+                "message": "Hello World!"
+            },
+            "headers": {
+                "Content-Type": "application/json"
             }
-          ],
-          "path": "hostNameData.info.age"
-        },
-        {
-          "type": "array",
-          "length": {
-            "min": 6,
-            "max": 6
-          },
-          "items": [
-            {
-              "type": "boolean",
-              "required": true
-            }
-          ],
-          "path": "hostNameData.info.gender.others"
-        },
-        {
-          "type": "string",
-          "length": {
-            "min": 3,
-            "max": 3
-          },
-          "required": true,
-          "path": "hostNameData.subHostData.info.name"
-        },
-        {
-          "type": "array",
-          "length": {
-            "min": 4,
-            "max": 4
-          },
-          "items": [
-            {
-              "type": "string",
-              "length": {
-                "min": 2,
-                "max": 2
-              },
-              "required": true
-            }
-          ],
-          "path": "hostNameData.subHostData.info.age"
-        },
-        {
-          "type": "array",
-          "length": {
-            "min": 6,
-            "max": 6
-          },
-          "items": [
-            {
-              "type": "boolean",
-              "required": true
-            }
-          ],
-          "path": "hostNameData.subHostData.info.gender.others"
-        },
-        {
-          "type": "string",
-          "length": {
-            "min": 3,
-            "max": 3
-          },
-          "required": true,
-          "path": "hostNameData.subHostData.thirdHostData.name"
-        },
-        {
-          "type": "array",
-          "length": {
-            "min": 4,
-            "max": 4
-          },
-          "items": [
-            {
-              "type": "string",
-              "length": {
-                "min": 2,
-                "max": 2
-              },
-              "required": true
-            }
-          ],
-          "path": "hostNameData.subHostData.thirdHostData.age"
-        },
-        {
-          "type": "array",
-          "length": {
-            "min": 6,
-            "max": 6
-          },
-          "items": [
-            {
-              "type": "boolean",
-              "required": true
-            }
-          ],
-          "path": "hostNameData.subHostData.thirdHostData.gender.others"
         }
-      ],
-      "query": {
-        "message": "Hello World!"
-      },
-      "headers": {
-        "Content-Type": "application/json"
-      }
     }
-  }
 }

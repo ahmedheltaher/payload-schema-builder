@@ -3,7 +3,10 @@ const path = require('path');
 const Archive = require('./src/archive');
 
 const input = process.argv[2];
-const output = process.argv[3] || 'output.json';
+let output = process.argv[3] || 'output.json';
+
+if (output && (!path.extname(output) || path.extname(output) !== '.json'))
+	output = `${output}.json`;
 
 if (!input) {
 	console.log('No input file provided');
@@ -24,6 +27,6 @@ json.routes.forEach(({ route, method, body, query, headers }) => {
 	archive.updateRoute(route, method, { body, query, headers });
 });
 
-const outputData = JSON.stringify(archive.getAllRoutes(), null, 2);
+const outputData = JSON.stringify(archive.getAllRoutes(), null, 4);
 
 fs.writeFileSync(outputPath, outputData, 'utf8');

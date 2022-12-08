@@ -7,9 +7,6 @@
 				"name": "John Doe",
 				"age": 30,
 				"cars": [
-					"Ford",
-					"BMW",
-					"Fiat"
 				],
 				"address": {
 					"street": "Main",
@@ -35,9 +32,6 @@
 			"body": {
 				"name": "John Doelk'askdsakndkl'asnd",
 				"cars": [
-					"Ford",
-					"BMW",
-					"Fiat"
 				],
 				"address": {
 					"street": "Main Street asdljsalkdj",
