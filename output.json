@@ -95,13 +95,13 @@
                     "type": "array",
                     "length": {
                         "min": 3,
-                        "max": 4
+                        "max": 5
                     },
                     "items": [
                         {
                             "type": "array",
                             "length": {
-                                "min": 3,
+                                "min": 2,
                                 "max": 4
                             },
                             "items": [
@@ -113,7 +113,7 @@
                             "required": true
                         }
                     ],
-                    "required": false,
+                    "required": true,
                     "path": "matrix"
                 },
                 {

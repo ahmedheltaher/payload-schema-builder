@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/ahmedheltaher/payload-schema-builder/issues"
   },
-  "homepage": "https://github.com/ahmedheltaher/payload-schema-builder#readme"
+  "homepage": "https://github.com/ahmedheltaher/payload-schema-builder#readme",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
 }
